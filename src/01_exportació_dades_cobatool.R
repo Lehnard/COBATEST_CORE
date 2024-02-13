@@ -74,7 +74,9 @@ cobatest_export <- setDT(cobatest_export)
 hg_centro <- "hg_centro"
 hg_centro <- dbReadTable(con, hg_centro)
 hg_centro <- setDT(hg_centro)
-
+# write.xlsx(hg_centro, paste0("out/hg_centro_", TODAY,".xlsx"))
+# fwrite(hg_centro, paste0("out/hg_centro_", TODAY, ".csv"))
+# 
 
 # ## ext_log_entries        ####
 # # -------------------------- #
