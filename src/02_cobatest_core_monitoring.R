@@ -14,6 +14,7 @@ cat('\014')
 
 
 library(data.table)
+library(openxlsx)
 
 TODAY <- format(Sys.Date(), '%Y%m%d') 
 
@@ -31,12 +32,23 @@ MONTH <- '01'
 FILE <- grep(x = list.files("data/cobatest_export/"), pattern = paste0(MONTH,'_',YEAR), fixed = T, value = T)
 
 coba <- setDT(readRDS(paste0("data/cobatest_export/",FILE)))
-cat(paste(colnames(cobatest_export), collapse = '\n'))
+cat(paste(colnames(coba), collapse = '\n'))
 
 
 
+# auxiliar data      ####
+# --------------------- #
+centros_core <- setDT(read.xlsx("data/auxiliar/20240213_Centros CORE.xlsx"))
 
 
 
+# _________________________________________________________________________ ####
+# ---------------------------------------------------------------------------- #
+# INDICADORS CORE                                                           ####       
+# ---------------------------------------------------------------------------- #
 
 
+##
+
+coba[, .N, type_syphilis_test]
+coba[, .N, linkage_healthcare]
